@@ -97,6 +97,12 @@ section p {
     gap: 20px;
 }
 
+@property --animationDeg {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
 .project {
     width: 30%;
     background-color: #444444;
@@ -105,7 +111,21 @@ section p {
     box-sizing: border-box;
     transition: transform 0.3s ease-in-out;
     z-index: 1;
+    border: 2px solid transparent;
+    animation: changeDeg 5s infinite linear;
+    border-image: linear-gradient(var(--animationDeg), violet, purple, indigo, transparent 50%) 1;
+
 }
+
+@keyframes changeDeg {
+    0% {
+        --animationDeg: 0deg; 
+    }
+    100% {
+        --animationDeg: 360deg; 
+    }
+}
+
 
 .project h3 {
     color: #FF6347;
@@ -134,6 +154,7 @@ section p {
 
 .project:hover {
     transform: translateY(-5px);
+    cursor: pointer;
 }
 
 footer {
